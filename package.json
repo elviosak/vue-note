@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "git": "git add . && git commit -m \"test\"&& git push origin master",
-    "pub": "git add dist && git commit -m \"dist\" && git subtree push --prefix dist origin gh-pages"
+    "git": "git add . && git commit -m \"test\"&& git push origin master"
   },
   "dependencies": {
     "axios": "^0.19.0",
