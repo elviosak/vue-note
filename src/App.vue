@@ -55,7 +55,7 @@ export default {
   },
   watch: {
     title() {
-      document.title = 'Vue-Note - ' + this.title;
+      if(this.title.length > 0) document.title = this.title + ' - Vue-Note - ';
     }
   },
   methods: {
