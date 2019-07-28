@@ -1,25 +1,20 @@
 <template>
   <div id="app">
-    <h1>Vue Prism Editor</h1>
-    <button @click="save">Save</button>
-    <h2>id: {{id}}</h2>
-    <h2>
-      title:
-      <input type="text" v-model="title" />
-    </h2>
-    <input type="checkbox" v-model="lineNumbers" /> Linenumbers
-    <div class="editor-container">
-      <prism-editor v-model="code" language="js" :line-numbers="lineNumbers" class="my-editor" />
+    <div class="header">
+      <h4>
+        <span class="margin">
+          title:
+          <input type="text" v-model="title" />
+        </span> |
+        <span class="margin">id: {{id}}</span>
+        <button class="margin" @click="save">Save</button>
+      </h4>
     </div>
 
-    <h1>Autosize</h1>
-    <p>
-      don't use
-      <b>min-height</b> or
-      <b>height</b> you could still define
-      <b>max-height</b>
-    </p>
-    <prism-editor v-model="code" language="js" />
+    <div class="editor-container">
+      <input type="checkbox" v-model="lineNumbers" /> Linenumbers
+      <prism-editor v-model="code" language="js" :line-numbers="lineNumbers" class="my-editor" />
+    </div>
   </div>
 </template>
 
@@ -47,7 +42,7 @@ export default {
       id: "",
       title: "",
       code: null,
-      lineNumbers: true,
+      lineNumbers: true
     };
   },
   components: {
@@ -55,7 +50,7 @@ export default {
   },
   watch: {
     title() {
-      if(this.title.length > 0) document.title = this.title + ' - Vue-Note - ';
+      if (this.title.length > 0) document.title = this.title + " - Vue-Note - ";
     }
   },
   methods: {
@@ -75,23 +70,58 @@ export default {
       id = id.substr(1);
       this.id = id;
       getData(this.id).then(data => {
-        this.code = data.code
-        this.title = data.title || id
+        this.code = data.code;
+        this.title = data.title || id;
       });
+    } else {
+      this.title = "New Note";
     }
   }
 };
 </script>
 
 <style>
-.editor-container {
+body {
   margin: 0;
   padding: 0;
-  height: 600px;
-  font-size: 12px;
+  overflow: hidden;
+}
+#app {
+  display: inline-grid;
+  grid-template-rows: 3em calc(100vh - 3em);
+  background-color: #666;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  flex: 1;
+}
+button {
+  padding: 2px 15px;
+   border-radius: 10px;
+   border-color: rgba(10, 148, 67, 0.644);
+  background-color: rgb(25, 78, 47);
+  color: #aaa;
+  font-weight: 500;
+}
+button:focus {
+  outline: 0;
+}
+.editor-container {
+  overflow: hidden;
+  flex: auto;
+  margin: 5px;
+  padding: 5px;
+  padding-bottom: 2em;
+  font-size: 13px;
 }
 .editor {
-  /* height: 100%; */
-  font-size: 12px;
+  overflow-x: scroll;
+}
+.margin {
+  margin: 0px 10px;
 }
 </style>
