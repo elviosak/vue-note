@@ -4,7 +4,7 @@
       <h4>
         <span class="margin">
           title:
-          <input type="text" v-model="title" />
+          <input class="text" type="text" v-model="title" />
         </span> |
         <span class="margin">id: {{id}}</span>
         <button class="margin" @click="save">{{btnLabel}}</button>
@@ -89,6 +89,7 @@ body {
   padding: 0;
   overflow: hidden;
 }
+
 #app {
   display: inline-grid;
   grid-template-rows: 3em calc(100vh - 3em);
@@ -113,6 +114,9 @@ button {
 button:focus {
   outline: 0;
 }
+input.text{
+  width: 8em;
+}
 .editor-container {
   overflow: hidden;
   flex: auto;
@@ -125,6 +129,6 @@ button:focus {
   overflow-x: scroll;
 }
 .margin {
-  margin: 0px 10px;
+  margin: 0px 5px;
 }
 </style>
