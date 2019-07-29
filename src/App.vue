@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <div class="header">
-      <h4>
+      <div class="line">
         <a href="/vue-note/">New</a>
+        <a href="https://github.com/slidinghotdog/vue-note">Github</a>
+      </div>
+      <div class="line">
         <span class="margin">
           title:
           <input class="text" type="text" v-model="title" />
         </span> |
         <span class="margin">id: {{id}}</span>
         <button class="margin" @click="save">{{btnLabel}}</button>
-      </h4>
+      </div>
     </div>
 
     <div class="editor-container">
@@ -97,7 +100,7 @@ body {
 
 #app {
   display: inline-grid;
-  grid-template-rows: 3em calc(100vh - 3em);
+  grid-template-rows: 4em calc(100vh - 4em);
   background-color: #666;
   overflow: hidden;
   height: 100vh;
@@ -107,6 +110,13 @@ body {
 }
 .header {
   padding: 0px 10px;
+  font-size: 14px;
+}
+.line {
+  margin: 0.7em 0;
+}
+a {
+  margin: 0px 10px;
 }
 button {
   padding: 2px 15px;
