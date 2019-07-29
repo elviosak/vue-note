@@ -33,7 +33,7 @@ const getData = async id => {
 };
 const putData = async (data, id) => {
   let response = await axios.put(root + "/" + id, data);
-  return response.data;
+  return id;
 };
 export default {
   name: "App",
@@ -58,7 +58,11 @@ export default {
   methods: {
     save() {
       if (this.id.length > 0) {
-        putData({ code: this.code, title: this.title }, this.id);
+        putData({ code: this.code, title: this.title }, this.id).then(
+          result => {
+            document.location.search = "?" + result;
+          }
+        );
       } else {
         postData({ code: this.code, title: this.title }).then(result => {
           document.location.search = "?" + result;
@@ -114,7 +118,7 @@ button {
 button:focus {
   outline: 0;
 }
-input.text{
+input.text {
   width: 8em;
 }
 .editor-container {
