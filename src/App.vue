@@ -52,7 +52,7 @@ export default {
 
   watch: {
     title() {
-      if (this.title.length > 0) document.title = this.title + " - Vue-Note - ";
+      if (this.title.length > 0) document.title = this.title + " - Vue-Note";
     }
   },
   methods: {
