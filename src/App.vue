@@ -2,6 +2,7 @@
   <div id="app">
     <div class="header">
       <h4>
+        <a href="/vue-note/">New</a>
         <span class="margin">
           title:
           <input class="text" type="text" v-model="title" />
@@ -105,7 +106,7 @@ body {
   padding: 0;
 }
 .header {
-  flex: 1;
+  padding: 0px 10px;
 }
 button {
   padding: 2px 15px;
