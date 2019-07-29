@@ -7,7 +7,7 @@
           <input type="text" v-model="title" />
         </span> |
         <span class="margin">id: {{id}}</span>
-        <button class="margin" @click="save">Save</button>
+        <button class="margin" @click="save">{{btnLabel}}</button>
       </h4>
     </div>
 
@@ -37,17 +37,19 @@ const putData = async (data, id) => {
 };
 export default {
   name: "App",
+  components: {
+    PrismEditor
+  },
   data() {
     return {
+      btnLabel: "Save",
       id: "",
       title: "",
       code: null,
       lineNumbers: true
     };
   },
-  components: {
-    PrismEditor
-  },
+
   watch: {
     title() {
       if (this.title.length > 0) document.title = this.title + " - Vue-Note - ";
@@ -72,6 +74,7 @@ export default {
       getData(this.id).then(data => {
         this.code = data.code;
         this.title = data.title || id;
+        this.btnLabel = "Update";
       });
     } else {
       this.title = "New Note";
@@ -101,8 +104,8 @@ body {
 }
 button {
   padding: 2px 15px;
-   border-radius: 10px;
-   border-color: rgba(10, 148, 67, 0.644);
+  border-radius: 10px;
+  border-color: rgba(10, 148, 67, 0.644);
   background-color: rgb(25, 78, 47);
   color: #aaa;
   font-weight: 500;
