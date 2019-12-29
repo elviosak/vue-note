@@ -36,7 +36,7 @@ const getData = async id => {
   return response.data;
 };
 const putData = async (data, id) => {
-  let response = await axios.put(root + "/" + id, data);
+  await axios.put(root + "/" + id, data);
   return id;
 };
 export default {
